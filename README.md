@@ -3,6 +3,7 @@
 Concentration can be played with any number of players or as a solitaire game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows (in fact, several game shows have used its name in their titles) and can be used as an educational game.
 
 **User Stories**
+
 As a user, I want the ability to...
 
 * choose two cards and turn them face up.
@@ -32,4 +33,4 @@ Concentration is not limited to playing cards. Many versions of the game that ar
 ![Alt text](images/logoActivity.png)
 ![Alt text](images/memory-game-for-kids-free-vector.jpg)
 ![Alt text](images/FoodIcons.png)
-![Alt text](images/UnknownIcon.jpg)
+![Alt text](images/BackCard.png)
