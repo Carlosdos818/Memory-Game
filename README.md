@@ -1,7 +1,7 @@
 **Overview**
-* Concentration(Memory Game) is a round game in which all of the cards are laid face down on a surface and two cards are flipped face up over each turn. The object of the game is to turn over pairs of matching cards.
+* Concentration (Memory Game) is a game in which all of the cards are laid face down on a surface and two cards are flipped face up and over during each player(s) turn. The object of the game is to turn over pairs of matching cards.
 
-Concentration can be played with any number of players or as a solitaire or patience game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows (in fact, several game shows have used its name in their titles) and can be employed as an educational game.
+Concentration can be played with any number of players or as a solitaire game. It is a particularly good game for young children, though adults may find it challenging and stimulating as well. The scheme is often used in quiz shows (in fact, several game shows have used its name in their titles) and can be used as an educational game.
 
 
 
