@@ -32,4 +32,6 @@ Concentration is not limited to playing cards. Many versions of the game that ar
 ![Alt text](images/logoActivity.png)
 ![Alt text](images/memory-game-for-kids-free-vector.png)
 ![Alt text](images/FoodIcons.png)
-![Alt text](images/BackCard.png)
+![Alt text][def]
+
+[def]: images/BackCard.png
