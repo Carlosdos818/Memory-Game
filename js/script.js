@@ -4,6 +4,8 @@ const cardArray = [
 "images/Burrito.png", "images/Fries.png", "images/Hamburger.png",
 "images/Pasta.png", "images/Pizza.png", "images/VeggieSoup.png"
 ];
+const backCard = ["images/BackCard.png"]// backcard]
+const blankCard = ["images/Blank.png"]// blankcard
 // console.log(cardArray)
 
 //    -create pairs of images 
@@ -30,7 +32,7 @@ for (let i = 0; i < rows; i++) {
     gameBoard[i][j] = pairs[i * cols + j];
   }
 }
-//Display the game board images on the web page
+//grab the div "gameBoard" from the html, display the game board images on the web page
 const gameBoardContainer = document.getElementById("gameBoard");
 
 for (const row of gameBoard) {
@@ -39,7 +41,10 @@ for (const row of gameBoard) {
 
   for (const cardImage of row) {
     const cardElement = document.createElement("img");
-    cardElement.src = cardImage;
+    // Set the default image to the back card
+    cardElement.src = backCard[0];
+
+    
     cardElement.classList.add("card");
     rowContainer.appendChild(cardElement);
   }
@@ -47,24 +52,69 @@ for (const row of gameBoard) {
   gameBoardContainer.appendChild(rowContainer);
 }
 
-//    - Place two instances of each card type randomly on the game board
-  cardArray.sort(() => 0.5 - Math.random())
-//    - Create a variable to track the number of flipped cards
-let flippedCards = 0;
-//    - Create a variable to track the number of matched pairs
-let matchedPairs = 0;
+
+ 
 
 // 2. Handle card clicks:
 //    - Add click event listeners to each card element
+const cardElements = document.querySelectorAll('.card')
 //    - When a card is clicked:
 //      - If the card is already flipped or matched, do nothing
 //      - Flip the card to reveal its image
+
 //      - Increment the flipped card count
 //      - If two cards are flipped:
 //        - Check if they match:
 //          - If they match, increment the matched pair count
 //          - If they don't match, wait a short delay, then flip them back
 //        - Reset the flipped card count to zero
+cardElements.forEach((cardElement, index) => {
+    cardElement.addEventListener('click', () => {
+      if (
+        !cardElement.classList.contains('flipped') &&
+        !cardElement.classList.contains('matched')
+      ) {
+        cardElement.classList.add('flipped');
+        cardElement.src = pairs[index];
+        handleCardClick(cardElement);
+      }
+    });
+  });
+  function handleCardClick(clickedCard) {
+    if (flippedCards === 2) {
+      const flippedCardsArray = Array.from(document.querySelectorAll('.flipped'));
+      const [card1, card2] = flippedCardsArray;
+  
+      if (card1.src === card2.src) {
+        // Cards match
+        card1.classList.add('matched');
+        card2.classList.add('matched');
+        card1.src = blankCard[0]; // Set matched cards to the Blank.png image
+        card2.src = blankCard[0];
+        matchedPairs++;
+  
+        // Check if all pairs are matched (game over condition)
+        if (matchedPairs === cardArray.length) {
+          // Handle game over logic
+          console.log('Game over!');
+        }
+  
+        // Reset flipped cards count
+        flippedCards = 0;
+      } else {
+        // Cards don't match
+        setTimeout(() => {
+          card1.classList.remove('flipped');
+          card2.classList.remove('flipped');
+          // Reset flipped cards count
+          flippedCards = 0;
+        }, 1000);
+      }
+    } else {
+      flippedCards++;
+    }
+  }
+
 
 // 3. Check for game completion:
 //    - If the matched pair count equals the number of card types, the game is won
@@ -98,11 +148,4 @@ let matchedPairs = 0;
 //     - Test the game for different scenarios and edge cases
 //     - Debug any issues that arise during testing
 
-// 11. Optimize:
-//     - Optimize code for performance and efficiency
 
-
-
-//make a card array to laydown all the 12 cards for the game
-//get cards to sortout ramdomly 
-// console.log(cardArray)
