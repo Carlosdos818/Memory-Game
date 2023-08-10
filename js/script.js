@@ -11,53 +11,88 @@ const blankCard = ["images/Blank.png"]// blankcard
 //    -create pairs of images 
 const pairs = cardArray.concat(cardArray)
 // console.log(pairs)
-//    - Shuffle the card types
-function shuffleArray() {
-    for (let i = pairs.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
-    }
-}
 
-shuffleArray(pairs);
-//    - Create an array to represent the game board
+// shuffleArray(pairs);
+pairs.sort(() => 0.5 - Math.random());
 
-const rows = 3;
-const cols = 4;
-const gameBoard = new Array(rows);
+//    - Create the game variables
+const display = document.querySelector('#gameBoard')
+const resultDisplay = document.querySelector('#result')
+let cardsChosen = []
+let cardsChosenIds = []
+const cardsWon = []
 
-for (let i = 0; i < rows; i++) {
-  gameBoard[i] = new Array(cols);
-  for (let j = 0; j < cols; j++) {
-    gameBoard[i][j] = pairs[i * cols + j];
+
+ // create board
+function gameBoard () {
+  for (let i = 0; i < 12; i++) {
+  const card = document.createElement('img')
+    card.setAttribute('src', backCard[0])
+    card.setAttribute('data-id', i)
+    // add event listener
+    card.addEventListener('click', flipCard)
+    display.appendChild(card)
   }
 }
-//grab the div "gameBoard" from the html, display the game board images on the web page
-const gameBoardContainer = document.getElementById("gameBoard");
+gameBoard();
 
-for (const row of gameBoard) {
-  const rowContainer = document.createElement("div");
-  rowContainer.classList.add("game-row");
+//check for match message
+function checkMatch() {
+  const cards = document.querySelectorAll('img')
+  const optionOneId = cardsChosenIds[0]
+  const optionTwoId = cardsChosenIds[1]
 
-  for (const cardImage of row) {
-    const cardElement = document.createElement("img");
-    // Set the default image to the back card
-    cardElement.src = backCard[0];
-
-    
-    cardElement.classList.add("card");
-    rowContainer.appendChild(cardElement);
+  console.log('Check for a match!')
+  if (optionOneId == optionTwoId) {
+    cards[optionOneId].setAttribute('src', backCard[0])
+    cards[optionTwoId].setAttribute('src', backCard[0])
+    alert('You clicked the same card!')
   }
 
-  gameBoardContainer.appendChild(rowContainer);
+  if (cardsChosen[0] == cardsChosen[1]) {
+    alert('You found a match!')
+    cards[optionOneId].setAttribute('src', blankCard[0])
+    cards[optionTwoId].setAttribute('src', blankCard[0])
+    cards[optionOneId].removeEventListener('click', flipCard)
+    cards[optionTwoId].removeEventListener('click', flipCard)
+    cardsWon.push(cardsChosen)
+
+  } else {
+    cards[optionOneId].setAttribute('src', backCard[0])
+    cards[optionTwoId].setAttribute('src', backCard[0])
+    alert('Try again!')
+  } 
+
+
+  resultDisplay.textContent = cardsWon.length
+  cardsChosen = []
+  cardsChosenIds = []
+
+  if (cardsWon.length == pairs.length/2) {
+    resultDisplay.textContent = 'Congratulations you match them all!'
+  }
 }
 
+//fliping card
+function flipCard() {
+  const cardId = this.getAttribute('data-id')
+  cardsChosen.push(pairs[cardId])
+  cardsChosenIds.push(cardId)
+  console.log(cardsChosen)
+  console.log(cardsChosenIds)
+  this.setAttribute('src', pairs[cardId] )
+
+  //checking for matches/mismatches
+  if (cardsChosen.length === 2) {
+  setTimeout(checkMatch, 500)
+  }
+}
 
  
 
 // 2. Handle card clicks:
 //    - Add click event listeners to each card element
-const cardElements = document.querySelectorAll('.card')
+
 //    - When a card is clicked:
 //      - If the card is already flipped or matched, do nothing
 //      - Flip the card to reveal its image
@@ -68,53 +103,6 @@ const cardElements = document.querySelectorAll('.card')
 //          - If they match, increment the matched pair count
 //          - If they don't match, wait a short delay, then flip them back
 //        - Reset the flipped card count to zero
-cardElements.forEach((cardElement, index) => {
-    cardElement.addEventListener('click', () => {
-      if (
-        !cardElement.classList.contains('flipped') &&
-        !cardElement.classList.contains('matched')
-      ) {
-        cardElement.classList.add('flipped');
-        cardElement.src = pairs[index];
-        handleCardClick(cardElement);
-      }
-    });
-  });
-  function handleCardClick(clickedCard) {
-    if (flippedCards === 2) {
-      const flippedCardsArray = Array.from(document.querySelectorAll('.flipped'));
-      const [card1, card2] = flippedCardsArray;
-  
-      if (card1.src === card2.src) {
-        // Cards match
-        card1.classList.add('matched');
-        card2.classList.add('matched');
-        card1.src = blankCard[0]; // Set matched cards to the Blank.png image
-        card2.src = blankCard[0];
-        matchedPairs++;
-  
-        // Check if all pairs are matched (game over condition)
-        if (matchedPairs === cardArray.length) {
-          // Handle game over logic
-          console.log('Game over!');
-        }
-  
-        // Reset flipped cards count
-        flippedCards = 0;
-      } else {
-        // Cards don't match
-        setTimeout(() => {
-          card1.classList.remove('flipped');
-          card2.classList.remove('flipped');
-          // Reset flipped cards count
-          flippedCards = 0;
-        }, 1000);
-      }
-    } else {
-      flippedCards++;
-    }
-  }
-
 
 // 3. Check for game completion:
 //    - If the matched pair count equals the number of card types, the game is won
