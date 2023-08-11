@@ -1,4 +1,8 @@
 
+/*media query for screens smaller than 600px wide */
+@media (max-width: 600px) {
+  
+}
 
 body {
     margin: 0;
