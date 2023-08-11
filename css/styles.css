@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 /* media query for screens smaller than 600px wide */
 @media (max-width: 600px) {
  
+=======
+
+/*media query for screens smaller than 600px wide */
+@media (max-width: 600px) {
+  
+>>>>>>> main
 }
 
 body {
