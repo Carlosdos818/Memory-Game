@@ -15,7 +15,11 @@ As a user, I want the ability to...
 the game ends after the last pair is picked.
 Concentration is not limited to playing cards. Many versions of the game that are designed for children may have different themes. In some computer versions, the cards may randomly move to increase the difficulty.
 
+**technologies used:**
 
+* HTML
+* CSS
+* JAVASCRIPT
 
 
 **Bonus Stories**
