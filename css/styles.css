@@ -1,142 +1,141 @@
 
 body {
-    margin: 0;
-    height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    background-image: url('../images/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    font-family: "Arial", sans-serif;
-  } 
+  margin: 0;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
+  background-image: url('../images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+} 
 
 
-  #gameTitle {
-    font-family: "Pacifico", cursive;
-    font-size: 48px;
-    font-weight: bold;
-    color: fuchsia;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    background-color: #f5f5f5;
-    padding: 15px 30px;
-    border-radius: 10px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-  }
-  #gameTitle:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  }
+#gameTitle {
+  font-family: "Pacifico", cursive;
+  font-size: 48px;
+  font-weight: bold;
+  color: fuchsia;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  background-color: #f5f5f5;
+  padding: 15px 30px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+#gameTitle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
 
-  
-  #gameScore {
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #2ecc71;
-    padding: 10px 16px;s
-    border-radius: 20px;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-    display: inline-block;
-    margin-top: 5px;
-  }
+
+#gameScore {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #2ecc71;
+  padding: 10px 16px;s
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  margin-top: 5px;
+}
 
 
 .timerClass {
-  font-family: 'Arial', sans-serif;
-  font-size: 24px;
-  color: #ffffff;
-  background-color: #f05d23;
-  padding: 2px;
-  border-radius: 5px;
-  width: 300px;
-  margin: 5px auto;
-  text-align: center;
+font-family: 'Arial', sans-serif;
+font-size: 24px;
+color: #ffffff;
+background-color: #f05d23;
+padding: 2px;
+border-radius: 5px;
+width: 300px;
+margin: 5px auto;
+text-align: center;
 }
 
 
 #timer {
-  font-size: 36px;
-  font-weight: bold;
-  margin-left: 10px;
-  color: white;
+font-size: 36px;
+font-weight: bold;
+margin-left: 10px;
+color: white;
 }
 
 #shoutbox {
-  position: relative;
-  width: 250px;
-  background-color: #f5f5f5;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  margin-left: 20px;
-  display: inline-block;
+position: relative;
+width: 250px;
+background-color: #f5f5f5;
+padding: 10px;
+border-radius: 10px;
+box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+margin-left: 20px;
+display: inline-block;
 }
 
 #shoutbox:before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-top: 15px solid #f5f5f5;
-  top: 25%;
-  right: -11%;
-  transform: translateX(-50%);
+content: "";
+position: absolute;
+width: 0;
+height: 0;
+border-left: 15px solid transparent;
+border-right: 15px solid transparent;
+border-top: 15px solid #f5f5f5;
+top: 25%;
+right: -11%;
+transform: translateX(-50%);
 }
 
 
 
 #shout-messages {
-  text-align: center;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  max-height: 200px;
-  overflow-y: auto;
-  margin-top: 10px;
+text-align: center;
+list-style-type: none;
+padding: 0;
+margin: 0;
+max-height: 200px;
+overflow-y: auto;
+margin-top: 10px;
 }
 
 #shout-messages li {
-  padding: 5px;
-  
+padding: 5px;
+
 }
 
-  
-#gameBoard {
-    width: 450px;
-    height: 450px;
-    display: flex;
-    flex-wrap: wrap;
-  } 
 
-  #playAgain {
-    display: none;
-    background-color: red; 
-    color: #ffffff;   
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+#gameBoard {
+  width: 450px;
+  height: 450px;
+  display: flex;
+  flex-wrap: wrap;
+} 
+
+#playAgain {
+  display: none;
+  background-color: red; 
+  color: #ffffff;   
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 #playAgain:hover {
-  background-color: green;  
-  transform: scale(1.05);
+background-color: green;  
+transform: scale(1.05);
 }
 
 
 
 
- 
- 
+
